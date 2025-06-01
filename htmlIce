@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Interactive Skill Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .skill {
+      margin-bottom: 30px;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .bar-container {
+      background-color: #ddd;
+      border-radius: 20px;
+      height: 25px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar {
+      height: 100%;
+      color: white;
+      text-align: right;
+      line-height: 25px;
+      padding-right: 10px;
+      font-weight: bold;
+      border-radius: 20px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Adjust Your Skill Levels</h2>
+
+  <div class="skill">
+    <div class="label">HTML: <span id="html-val">90%</span></div>
+    <div class="bar-container">
+      <div class="bar" id="html-bar" style="width: 90%; background-color: #4CAF50;">90%</div>
+    </div>
+    <input type="range" min="0" max="100" value="90" oninput="updateBar('html', this.value)">
+  </div>
+
+  <div class="skill">
+    <div class="label">CSS: <span id="css-val">80%</span></div>
+    <div class="bar-container">
+      <div class="bar" id="css-bar" style="width: 80%; background-color: #2196F3;">80%</div>
+    </div>
+    <input type="range" min="0" max="100" value="80" oninput="updateBar('css', this.value)">
+  </div>
+
+  <script>
+    function updateBar(skill, value) {
+      document.getElementById(`${skill}-bar`).style.width = value + '%';
+      document.getElementById(`${skill}-bar`).textContent = value + '%';
+      document.getElementById(`${skill}-val`).textContent = value + '%';
+    }
+  </script>
+
+</body>
+</html>
